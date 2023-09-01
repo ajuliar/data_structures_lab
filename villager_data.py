@@ -24,9 +24,9 @@ def all_species(filename):
     
     # file1 = open("MyFile.txt", "r")
     # TODO: replace this with your code
-    print(species)
+    ## print(species)
     return species
-all_species(filename)
+print(all_species(filename))
         
 
 
@@ -42,11 +42,22 @@ def get_villagers_by_species(filename, search_string="All"):
     """
 
     villagers = []
+    print(search_string)
+
+    if search_string != "All":
+        for villager in villager_split:
+            if villager[1] == search_string:
+                villagers.append(villager[0])
+    else:
+        for villager in villager_split:
+            villagers.append(villager[0])
+
 
     # TODO: replace this with your code
 
     return sorted(villagers)
 
+print(get_villagers_by_species(filename))
 
 def all_names_by_hobby(filename):
     """Return a list of lists containing villagers' names, grouped by hobby.
