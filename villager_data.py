@@ -4,7 +4,7 @@ villager_list = list(filename)
 villager_split = []
 
 for villager in (villager_list):
-    villager_split.append(villager.split('|'))
+    villager_split.append(villager.rstrip().split('|'))
 
 #print(villager_split)
 
@@ -152,6 +152,9 @@ def find_motto(filename, villager_name):
         if villager_name in (villager[0]):
             return villager[4]
 
+    return "Name not found"    
+            
+
 print(find_motto(filename, "Agnes"))
 
 def find_likeminded_villagers(filename, villager_name):
@@ -170,16 +173,19 @@ def find_likeminded_villagers(filename, villager_name):
     """
     likeminded_villagers = set()
 
+    personality = ""
+
     for villager in villager_split:
         if villager_name == villager[0]:
             personality = villager[2]
             break
 
-    for villager in villager_split:
-        if villager[2] == personality:
-            likeminded_villagers.add(villager[0])
+    if personality:
+        for villager in villager_split:
+            if villager[2] == personality:
+                likeminded_villagers.add(villager[0])
     
-    return(likeminded_villagers)
+    return likeminded_villagers
 
     # TODO: replace this with your code
 
