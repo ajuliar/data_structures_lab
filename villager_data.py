@@ -44,13 +44,17 @@ def get_villagers_by_species(filename, search_string="All"):
     villagers = []
     print(search_string)
 
-    if search_string != "All":
-        for villager in villager_split:
-            if villager[1] == search_string:
-                villagers.append(villager[0])
-    else:
-        for villager in villager_split:
+    for villager in villager_split:
+        if search_string in ("All", villager[1]):
             villagers.append(villager[0])
+
+    # if search_string != "All":
+    #     for villager in villager_split:
+    #         if villager[1] == search_string:
+    #             villagers.append(villager[0])
+    # else:
+    #     for villager in villager_split:
+    #         villagers.append(villager[0])
 
 
     # TODO: replace this with your code
@@ -70,7 +74,7 @@ def all_names_by_hobby(filename):
     """
 
     hobbies = ['Fitness', 'Nature', 'Education', 'Music', 'Fashion', 'Play']
-    grouped_villagers = []
+    
 
     fitness = []
     nature = []
@@ -98,14 +102,14 @@ def all_names_by_hobby(filename):
         elif villager[3] == "Play":
             play.append(villager[0])
 
-    grouped_villagers = [[fitness.sort()], [nature.sort()], [education.sort()]
-                         [music.sort()], [fashion.sort()], [play.sort()]]
+    grouped_villagers = [sorted(fitness), sorted(nature), sorted(education),
+                         sorted(music), sorted(fashion), sorted(play)]
     
 
 
     # TODO: replace this with your code
 
-    return []
+    return grouped_villagers
 
 print(all_names_by_hobby(filename))
 
@@ -123,12 +127,13 @@ def all_data(filename):
         - list[tuple[str]]: a list of tuples containing strings
     """
 
-    all_data = []
+    all_data = tuple(villager_split)
 
     # TODO: replace this with your code
 
     return all_data
 
+print(all_data(filename))
 
 def find_motto(filename, villager_name):
     """Return the villager's motto.
@@ -146,6 +151,7 @@ def find_motto(filename, villager_name):
 
     # TODO: replace this with your code
 
+print
 
 def find_likeminded_villagers(filename, villager_name):
     """Return a set of villagers with the same personality as the given villager.
