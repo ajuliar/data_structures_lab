@@ -69,9 +69,45 @@ def all_names_by_hobby(filename):
         - list[list[str]]: a list of lists containing names
     """
 
+    hobbies = ['Fitness', 'Nature', 'Education', 'Music', 'Fashion', 'Play']
+    grouped_villagers = []
+
+    fitness = []
+    nature = []
+    education = []
+    music = []
+    fashion = []
+    play = []
+    
+    for villager in villager_split:
+        if villager[3] == "Fitness":
+            fitness.append(villager[0])
+        
+        elif villager[3] == "Nature":
+            nature.append(villager[0])
+        
+        elif villager[3] == "Education":
+            education.append(villager[0])
+
+        elif villager[3] == "Music":
+            music.append(villager[0])
+    
+        elif villager[3] == "Fashion":
+            fashion.append(villager[0])
+    
+        elif villager[3] == "Play":
+            play.append(villager[0])
+
+    grouped_villagers = [[fitness.sort()], [nature.sort()], [education.sort()]
+                         [music.sort()], [fashion.sort()], [play.sort()]]
+    
+
+
     # TODO: replace this with your code
 
     return []
+
+print(all_names_by_hobby(filename))
 
 
 def all_data(filename):
