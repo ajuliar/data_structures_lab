@@ -1,6 +1,13 @@
 """Functions to parse a file containing villager data."""
-#add for test 
-#add for test 22
+filename = open("villagers.csv", "r")
+villager_list = list(filename)
+villager_split = []
+
+for villager in (villager_list):
+    villager_split.append(villager.split('|'))
+
+#print(villager_split)
+
 def all_species(filename):
     """Return a set of unique species in the given file.
 
@@ -10,12 +17,17 @@ def all_species(filename):
     Return:
         - set[str]: a set of strings
     """
-
     species = set()
-
+    for villager in (villager_split):
+        
+        species.add(villager[1])
+    
+    # file1 = open("MyFile.txt", "r")
     # TODO: replace this with your code
-
+    print(species)
     return species
+all_species(filename)
+        
 
 
 def get_villagers_by_species(filename, search_string="All"):
