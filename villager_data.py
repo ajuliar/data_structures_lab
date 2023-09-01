@@ -148,10 +148,11 @@ def find_motto(filename, villager_name):
     Return:
         - str: the villager's motto or None
     """
+    for villager in villager_split:
+        if villager_name in (villager[0]):
+            return villager[4]
 
-    # TODO: replace this with your code
-
-print
+print(find_motto(filename, "Agnes"))
 
 def find_likeminded_villagers(filename, villager_name):
     """Return a set of villagers with the same personality as the given villager.
